@@ -1,0 +1,317 @@
+<script>	
+/*
+    style='background-image: url(3-0-3.png);'
+地圖代碼：
+	333333333333333343314424333333333333:testmap1
+	333333333333333343313324333344333333:testmap2
+	333333343333341333344444343344333333:undefined
+
+
+	333333334333444443313334445423333343:map1
+	353333331334443455333433334234333334:map2
+	333333413343344543334343435323454334:map3
+	443533433533314543333632333533334544:map4
+	334333314343342543344433343333333435:map10
+*/
+</script>
+
+
+
+
+
+
+
+<body onload="putlist();">
+	<div style='width:350px;height:350px;'>
+		<div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div>
+		<div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div>
+		<div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div>
+		<div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div>
+		<div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div>
+		<div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div><div data-type='3' data-target='0' onclick='select(this)'></div>
+	</div>
+	<div style='width:350px;height:350px;'>
+		<div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3' style='background-image: url(3-0-1.png);'></div><div data-type='3' style='background-image: url(3-0-2.png);'></div><div data-type='3' style='background-image: url(3-0-3.png);'></div><div data-type='3' style='background-image: url(3-0-4.png);'></div><div data-type='3' ></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div><div data-type='3'></div>
+	</div>
+	<a>輸入地圖名稱：</a><input type='text' style='width:500px' id='mapNameInput'/><br/>
+	<a>輸入地圖代碼：</a><input type='text' style='width:500px' id='inputBox'/><input type='button' id='inputBut' onclick='input()'/><br/>
+	<a>輸出地圖代碼：</a><input id='outputBox1' style='width:500px;' ></input><input type='button' id='outputBut1' onclick='output2()'/>
+	<div style='clear: both;float:unset;background:unset;'></div>
+	<div id='selectBOX' style='background: #ccc;border:1px black solid;min-height:80px;min-width:80px;height:unset;width:unset;'></div>
+	<textarea  id='outputBox2' style='background: #ccc;border:1px black solid;min-height:80px;min-width:80px;height:unset;width:unset;clear: both;display: block;'></textarea>
+</body>
+<style>
+
+	div{
+		padding: 0;
+		margin:0;
+		width:52px;
+		height: 52px;
+		float: left;
+	}
+	[data-target]{
+		background: red;
+
+	}
+	[data-target='1']{    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+	}
+	[data-selected]{
+		margin:20px 15px 20px 15px;
+	}
+	[data-selected]::before{
+		content: attr(data-type);
+		position: relative;
+		left:-10px;
+	}
+	[data-selected='1']{
+		border:2px red solid;
+	}
+
+	/*////////////////////////////各種地圖///////////////////////////////*/
+	[data-type='1'] {		
+		background-image: url(1.png);
+	}
+	[data-type='2'] {		
+		background-image: url(2.png);
+	}
+	[data-type='3'] {		
+		background-image: url(3.png);
+	}
+	[data-type='4'] {		
+		background-image: url(4.png);
+	}
+	[data-type='5'] {		
+		background-image: url(5.png);
+	}
+	[data-type='6'] {		
+		background-image: url(6.png);
+	}
+</style>
+<script type="text/javascript">	
+
+	var list=[1,2,3,4,5,6];
+	//狀態定義
+	//status[type,ground,break,deadly];
+	function getStatus(type,place){
+		var status;
+		switch (type){
+			case '1':
+				//忍者埋伏的起點
+				status=['1',0,0,0];
+				break;
+			case '2':
+				//刺殺的目標
+				status=['2',0,0,0];
+				break;
+			case '3':
+				//普通的平地
+				status=['3',0,0,0];
+				break;
+			case '4':
+				//完全不可跨越的障礙物
+				status=['4',5,5,0];
+				break;
+			case '5':
+				//可以在平地被擊破的大石
+				status=['5',2,0,0];
+				break;
+			case '6':
+				//掉下去會致命的大坑
+				status=['6',0,0,1];
+				break;
+		}
+		return status[place];
+	}
+	var map=document.querySelectorAll('[data-target]');
+	var code;
+	var mapName;
+	function input(){
+		var str=document.getElementById('inputBox').value;
+		code=str.split(':',2)[0];
+		mapName=str.split(':',2)[1];
+		if(mapName) {
+			mapName=mapName.slice(0,16);
+			document.getElementById('mapNameInput').value=mapName;
+		}
+		else
+			mapName=document.getElementById('mapNameInput').value;
+		for(var i=0;i<36;i++){
+			var s=code.slice(i,(i+1));
+			if(!s) s='3';
+			map[i].setAttribute('data-type',s);
+		}
+
+	}
+	function output1(){
+		var s='';//only code
+		for(i=0;i<36;i++){
+			s+=map[i].getAttribute('data-type');
+		}
+		code=s;
+		if(document.getElementById('mapNameInput').value) mapName=document.getElementById('mapNameInput').value;
+		s+=':'+mapName;
+		document.getElementById('outputBox1').value=s;
+
+	}
+	function putlist(){
+		var s='';
+		for (var i=0;i<list.length;i++){
+			s+='<div data-type="'+list[i]+'" data-selected="0" onclick="put(this)"></div>'
+		}
+		document.getElementById('selectBOX').innerHTML=s;
+	}
+	var div;
+	function select(THIS) {	
+		div =THIS;
+		for(i=0;i<36;i++) map[i].setAttribute('data-target','0');
+		div.setAttribute('data-target','1');
+		var options=document.querySelectorAll('[data-selected]');
+		for(i=0;i<options.length;i++) {
+			if(div.getAttribute('data-type')==(i+1)) options[i].setAttribute('data-selected','1') ;
+			else options[i].setAttribute('data-selected','0') ;
+		}
+	}
+	function put(THIS){
+		div.setAttribute('data-type',THIS.getAttribute('data-type'));
+		select(div);
+
+	}
+	function output2(){
+		output1();
+		var s='<!--start of '+mapName+'-->\n';
+		s+='<block type="global_declaration" id="'+mapName+'g" x="-1616" y="-794">\n';
+		s+='    <field name="NAME">'+mapName+'</field>\n';
+		s+='    <value name="VALUE">\n';
+		s+='      <block type="lists_create_with" id="'+mapName+'L">\n';
+		s+='        <mutation items="0"></mutation>\n';
+		s+='      </block>\n';
+		s+='    </value>\n';
+		s+='</block>\n';
+		s+='\n';
+		s+='<block type="lexical_variable_set" id="'+mapName+'S" x="-1118" y="-306">\n';
+		s+='    <field name="VAR">global '+mapName+'</field>\n';
+		s+='    <value name="VALUE">\n';
+		s+='      <block type="lists_create_with" id="'+mapName+'l">\n';
+		s+='        <mutation items="36"></mutation>\n';
+		for(i=0;i<36;i++){
+			var type=code.slice(i,i+1);
+		s+='        <value name="ADD'+i+'">\n';
+		s+='          <block type="lists_create_with" id="'+mapName+'l2">\n';
+		s+='            <mutation items="4"></mutation>\n';
+		s+='            <value name="ADD0">\n';
+		s+='              <block type="text" id="'+mapName+i+'a">\n';
+		s+='                <field name="TEXT">'+getStatus(type,0)+'</field>\n';
+		s+='              </block>\n';
+		s+='            </value>\n';
+		s+='            <value name="ADD1">\n';
+		s+='              <block type="math_number" id="'+mapName+i+'b">\n';
+		s+='                <field name="NUM">'+getStatus(type,1)+'</field>\n';
+		s+='              </block>\n';
+		s+='            </value>\n';
+		s+='            <value name="ADD2">\n';
+		s+='              <block type="math_number" id="'+mapName+i+'c">\n';
+		s+='                <field name="NUM">'+getStatus(type,2)+'</field>\n';
+		s+='              </block>\n';
+		s+='            </value>\n';
+		s+='            <value name="ADD3">\n';
+		s+='              <block type="math_number" id="'+mapName+i+'d">\n';
+		s+='                <field name="NUM">'+getStatus(type,3)+'</field>\n';
+		s+='              </block>\n';
+		s+='            </value>\n';
+		s+='          </block>\n';
+		s+='        </value>\n';
+		}
+		s+='      </block>\n';
+		s+='    </value>\n';
+		s+='</block>\n';
+		s+='<!--end start of '+mapName+'-->\n';
+		document.getElementById('outputBox2').innerText=s;
+	}
+
+	/*
+	輸出格式範例	
+<block type="global_declaration" id="78^CK*Y$!)Z{M?i]I`H8" x="-1617" y="50">//$m.'g'
+    <field name="NAME">testmap</field>
+    <value name="VALUE">
+      <block type="lists_create_with" id="z!$3fO/5K5J@Q(Ya74f,">//$m.'L'
+        <mutation items="0"></mutation>
+      </block>
+    </value>
+</block>
+<block type="lexical_variable_set" id="S|TeQsb?o9hV]p`|lg[B" x="-1626" y="105">//$m.'s'
+    <field name="VAR">global testmap</field>
+    <value name="VALUE">
+      <block type="lists_create_with" id="_$MxR0X-)f}f3.ujXFnR">//$m.'l'
+        <mutation items="2"></mutation>
+        <value name="ADD0">
+          <block type="lists_create_with" id="Vx9+rK@=tkf%v@ZzZ?ed">//$m.$num
+            <mutation items="2"></mutation>
+            <value name="ADD0">
+              <block type="text" id="cRl)^V#G.Z]Hz^,tlSU.">//$m.$num.'a'
+                <field name="TEXT">1-1</field>
+              </block>
+            </value>
+            <value name="ADD1">
+              <block type="text" id="!=Gm=+^ay_3-E}IQTtQq">//$m.$num.'a'
+                <field name="TEXT">1-2</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="lists_create_with" id="6o0-;D=.R#@En%(4/*DV">
+            <mutation items="2"></mutation>
+            <value name="ADD0">
+              <block type="text" id="D8poB%x1%OM(]3nMj|8u">
+                <field name="TEXT">2-1</field>
+              </block>
+            </value>
+            <value name="ADD1">
+              <block type="text" id="Ub0b9Ev,sA$!goxK-v6*">
+                <field name="TEXT">2-2</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </value>
+</block>
+
+	*/
+
+/*
+刪除區塊
+
+                        <value name="ADD35">
+                            <block type="component_component_block" id="coordinateId36">
+                                <mutation component_type="Image" instance_name="coordinate36"></mutation>
+                                <field name="COMPONENT_SELECTOR">coordinate36</field>
+                            </block>
+                        </value>
+                    </block>
+                </value>                
+                <next>
+                ......
+                ......
+                    <block type="lexical_variable_set" id="Br5jlu;rL-^^llQbkcXf">
+                        <field name="VAR">global cy</field>
+                        <value name="VALUE">
+                            <block type="math_number" id="GK0VW@}gupzX!b/YME7$">
+                                <field name="NUM">0</field>
+                            </block>
+                        </value>
+                    </block>
+                ......
+                ......
+                </next>
+
+點點點區域刪除，使<next>對稱
+
+
+*/
+
+
+</script>
