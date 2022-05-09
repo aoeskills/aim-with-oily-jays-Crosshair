@@ -65,7 +65,22 @@
       top: 0;
       left: 0;
     }
+    .click-to-reload {
+      cursor: pointer;
+    }
   </style>
+  <script>
+    const setClickToReloadListener = (dom)=>{
+      dom.dataset.src = dom.src;
+      dom.addEventListener('click',()=>{
+        dom.removeAttribute('src');
+        setTimeout(()=>dom.setAttribute('src', dom.dataset.src),0);
+      })
+    }
+    window.addEventListener('load',()=>{
+      document.querySelectorAll('.click-to-reload').forEach(dom=>setClickToReloadListener(dom));
+    });
+  </script>
 </head>
 <body class="">
   <H1>用上面兩個小綠點瞄準！老兄！</H1>
@@ -74,33 +89,33 @@
     <div id="container"> 
       <img class="absloute" src='./original/Group 1.png'>
       <img class="absloute" src='./original/Group 3.png'>
-      <img class="absloute" src='./ps/AK47.gif' style='top: 88px;
+      <img class="absloute click-to-reload" src='./ps/AK47.gif' style='top: 88px;
     left: 82px;'>
-      <img class="absloute" src='./ps/SG 553.gif' style='top: 88px;
+      <img class="absloute click-to-reload" src='./ps/SG 553.gif' style='top: 88px;
   left: 272px;'>
-      <img class="absloute" src='./ps/Galil AR.gif' style='top: 88px;
+      <img class="absloute click-to-reload" src='./ps/Galil%20AR.gif' style='top: 88px;
   left: 462px;'>
 
       
-      <img class="absloute" src='./ps/M4A4.gif' style='top: 360px;
+      <img class="absloute click-to-reload" src='./ps/M4A4.gif' style='top: 360px;
   left: 82px;'>
-      <img class="absloute" src='./ps/M4A1-s.gif' style='top: 360px;
+      <img class="absloute click-to-reload" src='./ps/M4A1-s.gif' style='top: 360px;
   left: 272px;'>
-      <img class="absloute" src='./ps/AUG.gif' style='top: 360px;
+      <img class="absloute click-to-reload" src='./ps/AUG.gif' style='top: 360px;
   left: 462px;'>
-      <img class="absloute" src='./ps/FAMAS.gif' style='top: 360px;
+      <img class="absloute click-to-reload" src='./ps/FAMAS.gif' style='top: 360px;
   left: 652px;'>
 
       
-      <img class="absloute" src='./ps/MP9.gif' style='top: 632px;
+      <img class="absloute click-to-reload" src='./ps/MP9.gif' style='top: 632px;
   left: 82px;'>
-      <img class="absloute" src='./ps/Mac10.gif' style='top: 632px;
+      <img class="absloute click-to-reload" src='./ps/Mac10.gif' style='top: 632px;
   left: 272px;'>
-      <img class="absloute" src='./ps/UMP45.gif' style='top: 632px;
+      <img class="absloute click-to-reload" src='./ps/UMP45.gif' style='top: 632px;
   left: 462px;'>
-      <img class="absloute" src='./ps/MP5-SD.gif' style='top: 632px;
+      <img class="absloute click-to-reload" src='./ps/MP5-SD.gif' style='top: 632px;
   left: 652px;'>
-      <img class="absloute" src='./ps/P90.gif' style='top: 632px;
+      <img class="absloute click-to-reload" src='./ps/P90.gif' style='top: 632px;
   left: 842px;'>
 
     </div>
